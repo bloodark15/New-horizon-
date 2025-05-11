@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Vente d'Objets en Tout Genre</title>
+    <title>venglow</title>
     <style>
         body {
             font-family: Arial, sans-serif;
