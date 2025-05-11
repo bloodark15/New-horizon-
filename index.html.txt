@@ -65,7 +65,7 @@
 </head>
 <body>
     <header>
-        <h1>Vente d'Objets en Tout Genre</h1>
+        <h1>venglow</h1>
         <p>Des articles variés à prix abordables !</p>
     </header>
 
