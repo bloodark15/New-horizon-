@@ -1,0 +1,36 @@
+const express = require('express');
+const app = express();
+const port = 3000;
+
+app.use(express.json());
+
+// Mots-clés interdits
+const motsInterdits = [
+  "nourriture", "aliment", "repas", "boisson", "snack",
+  "drogue", "cannabis", "cocaïne", "ecstasy", "héroïne", "illégal",
+  "alcool", "vin", "bière", "whisky", "vodka", "rhum",
+  "cigarette", "tabac", "cigare", "vapoteuse", "vape"
+];
+
+// Vérifie si une annonce est interdite
+function contientMotInterdit(texte) {
+  const lower = texte.toLowerCase();
+  return motsInterdits.some(mot => lower.includes(mot));
+}
+
+// API pour ajouter une annonce
+app.post('/api/annonce', (req, res) => {
+  const { titre, description } = req.body;
+
+  if (contientMotInterdit(titre) || contientMotInterdit(description)) {
+    return res.status(400).json({ message: "❌ L’annonce contient des mots interdits. Rejetée par le bot." });
+  }
+
+  // Ici tu pourrais sauvegarder dans une base de données
+  console.log("✅ Annonce acceptée :", titre);
+  res.json({ message: "✅ Annonce ajoutée avec succès." });
+});
+
+app.listen(port, () => {
+  console.log(`Bot Venga en ligne sur http://localhost:${port}`);
+});

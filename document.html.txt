@@ -1,0 +1,41 @@
+<script>
+// Liste des mots-clés interdits
+const motsInterdits = [
+  "nourriture", "aliment", "repas", "boisson", "snack",
+  "drogue", "cannabis", "cocaïne", "ecstasy", "héroïne", "illégal",
+  "alcool", "vin", "bière", "whisky", "vodka", "rhum",
+  "cigarette", "tabac", "cigare", "vapoteuse", "vape"
+];
+
+// Fonction pour vérifier si une annonce contient un mot interdit
+function contientMotInterdit(description) {
+  const texte = description.toLowerCase();
+  return motsInterdits.some(mot => texte.includes(mot));
+}
+
+// Fonction de vérification d’une annonce (appelée au moment de la création)
+function verifierAnnonceAvantAjout(titre, description) {
+  if (contientMotInterdit(titre) || contientMotInterdit(description)) {
+    alert("❌ Cette annonce contient des produits interdits (nourriture, drogue, alcool ou tabac). Elle a été bloquée.");
+    return false; // Blocage de l’ajout
+  }
+
+  return true; // OK pour ajouter
+}
+
+// Exemple d’usage avec un formulaire
+document.addEventListener("DOMContentLoaded", () => {
+  const formulaire = document.querySelector("#formulaire-annonce");
+
+  if (formulaire) {
+    formulaire.addEventListener("submit", (e) => {
+      const titre = document.querySelector("#titre-annonce").value;
+      const description = document.querySelector("#description-annonce").value;
+
+      if (!verifierAnnonceAvantAjout(titre, description)) {
+        e.preventDefault(); // Empêche l’envoi du formulaire
+      }
+    });
+  }
+});
+</script>

@@ -1,0 +1,10 @@
+<div class="bot-rule-box" style="border: 1px solid #ccc; padding: 15px; margin: 20px 0; background-color: #fefefe;">
+  <h3>🔒 Règles de retrait automatique – Bot Venga</h3>
+  <ul>
+    <li>Retrait automatique de toute <strong>nourriture</strong>.</li>
+    <li>Retrait des <strong>produits illégaux</strong> (drogues, contrefaçons, objets volés...).</li>
+    <li>Retrait des <strong>produits contenant de l’alcool</strong>.</li>
+    <li>Retrait des <strong>cigarettes et produits au tabac</strong>.</li>
+  </ul>
+  <p style="color: red;"><strong>⚠️ Tout produit correspondant à ces catégories sera supprimé automatiquement par le bot.</strong></p>
+</div>

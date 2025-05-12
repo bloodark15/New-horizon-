@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Bot Venga – Création d’annonce</title>
+</head>
+<body>
+  <h2>Poster une annonce</h2>
+  <form id="formulaire-annonce">
+    <input type="text" id="titre-annonce" placeholder="Titre" required><br><br>
+    <textarea id="description-annonce" placeholder="Description" required></textarea><br><br>
+    <button type="submit">Envoyer</button>
+  </form>
+
+  <script>
+    document.querySelector("#formulaire-annonce").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const titre = document.querySelector("#titre-annonce").value;
+      const description = document.querySelector("#description-annonce").value;
+
+      const reponse = await fetch("http://localhost:3000/api/annonce", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ titre, description })
+      });
+
+      const resultat = await reponse.json();
+      alert(resultat.message);
+    });
+  </script>
+</body>
+</html>
